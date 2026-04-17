@@ -5,662 +5,180 @@
   <title>Greve dos Alunos – Escola Básica 2/3 Escultor António Fernandes de Sá</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root {
-      --bg: #0f172a;
-      --bg-alt: #020617;
-      --accent: #e11d48;
-      --accent-soft: #f97373;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --card: #111827;
-      --border: #1f2937;
-      --success: #22c55e;
-      --warning: #facc15;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
-      color: var(--text);
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
     }
-    a { color: var(--accent-soft); text-decoration: none; }
-    a:hover { text-decoration: underline; }
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.85));
-      border-bottom: 1px solid rgba(148,163,184,0.25);
+      background: #1e293b;
+      padding: 15px;
+      text-align: center;
+      border-bottom: 2px solid #e11d48;
     }
-    .nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0.75rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    header h1 {
+      margin: 0;
+      color: #f1f5f9;
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-    }
-    .logo-badge {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #f97373, #b91c1c);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      border: 1px solid rgba(248,250,252,0.6);
-      box-shadow: 0 0 18px rgba(248,113,113,0.7);
-    }
-    nav ul {
-      display: flex;
-      gap: 1.25rem;
-      list-style: none;
-      font-size: 0.9rem;
+    nav {
+      margin-top: 10px;
     }
     nav a {
-      color: var(--muted);
-      font-weight: 500;
+      color: #e5e7eb;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
     }
     nav a:hover {
-      color: var(--accent-soft);
-    }
-    .pill {
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(248,113,113,0.5);
-      color: var(--accent-soft);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      color: #e11d48;
     }
     main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem 1.25rem 3rem;
-    }
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 2rem;
-      align-items: center;
-      padding: 2.5rem 1.5rem;
-      margin-top: 1rem;
-      border-radius: 1.5rem;
-      background: radial-gradient(circle at top left, rgba(248,113,113,0.18), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(56,189,248,0.18), transparent 55%),
-                  linear-gradient(to bottom right, #020617, #020617);
-      border: 1px solid rgba(148,163,184,0.35);
-      box-shadow: 0 25px 60px rgba(15,23,42,0.9);
-    }
-    .hero h1 {
-      font-size: clamp(2.1rem, 3vw, 2.8rem);
-      line-height: 1.1;
-      margin-bottom: 0.75rem;
-    }
-    .hero h1 span {
-      color: var(--accent-soft);
-    }
-    .hero-sub {
-      color: var(--muted);
-      font-size: 0.98rem;
-      margin-bottom: 1.25rem;
-    }
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.85rem;
-    }
-    .hero-meta span {
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.8);
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-    .btn {
-      border-radius: 999px;
-      padding: 0.55rem 1.1rem;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .btn-primary {
-      background: linear-gradient(to right, #f97373, #b91c1c);
-      color: #f9fafb;
-      box-shadow: 0 12px 30px rgba(248,113,113,0.45);
-    }
-    .btn-outline {
-      background: transparent;
-      border-color: rgba(148,163,184,0.7);
-      color: var(--muted);
-    }
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-    .hero-right {
-      position: relative;
-      padding: 1.25rem;
-      border-radius: 1.25rem;
-      background: radial-gradient(circle at top, rgba(248,113,113,0.2), transparent 60%),
-                  #020617;
-      border: 1px solid rgba(148,163,184,0.4);
-      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
-      overflow: hidden;
-    }
-    .hero-right h2 {
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-    }
-    .hero-right-main {
-      font-size: 0.95rem;
-      margin-bottom: 0.75rem;
-    }
-    .hero-right-main strong {
-      color: var(--accent-soft);
-    }
-    .hero-taglist {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.75rem;
-    }
-    .hero-taglist span {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.9);
-    }
-    .hero-date-card {
-      margin-top: 0.75rem;
-      padding: 0.6rem 0.75rem;
-      border-radius: 0.9rem;
-      border: 1px dashed rgba(248,113,113,0.7);
-      background: rgba(15,23,42,0.9);
-      font-size: 0.85rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .hero-date-card span:first-child {
-      color: var(--muted);
-    }
-    .hero-date-card strong {
-      color: #fef9c3;
-    }
-    .badge-alert {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #fef9c3;
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
     }
     section {
-      margin-top: 2.5rem;
+      margin-bottom: 40px;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #334155;
     }
-    section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-    }
-    section p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
-      gap: 1.75rem;
-    }
-    .card {
-      background: var(--card);
-      border-radius: 1rem;
-      border: 1px solid var(--border);
-      padding: 1.1rem 1.2rem;
-      box-shadow: 0 16px 35px rgba(15,23,42,0.85);
-    }
-    .card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      font-size: 0.9rem;
-    }
-    .list {
-      list-style: none;
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .list li {
-      margin-bottom: 0.35rem;
-      display: flex;
-      gap: 0.4rem;
-    }
-    .list li::before {
-      content: "•";
-      color: var(--accent-soft);
-      margin-top: 0.05rem;
+    h2 {
+      color: #f472b6;
+      margin-top: 0;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
+      margin-top: 15px;
     }
     th, td {
-      border: 1px solid rgba(55,65,81,0.9);
-      padding: 0.55rem 0.6rem;
+      border: 1px solid #334155;
+      padding: 10px;
       text-align: left;
     }
     th {
-      background: #020617;
-      color: #e5e7eb;
-      font-weight: 600;
+      background: #0f172a;
     }
-    tr:nth-child(even) td {
-      background: rgba(15,23,42,0.85);
-    }
-    tr:nth-child(odd) td {
-      background: rgba(15,23,42,0.95);
-    }
-    .term-box {
-      font-size: 0.9rem;
-      color: var(--muted);
-      white-space: pre-line;
-    }
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 1rem;
-      margin-top: 0.75rem;
-    }
-    .timeline-step {
-      border-radius: 0.9rem;
-      border: 1px solid var(--border);
-      background: rgba(15,23,42,0.95);
-      padding: 0.8rem 0.9rem;
-      font-size: 0.85rem;
-    }
-    .timeline-step strong {
-      display: block;
-      margin-bottom: 0.25rem;
-      color: var(--accent-soft);
-    }
-    .faq-item {
-      margin-bottom: 0.75rem;
-    }
-    .faq-item h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.2rem;
-    }
-    .faq-item p {
-      font-size: 0.9rem;
-    }
-    .highlight {
-      color: var(--accent-soft);
-      font-weight: 600;
-    }
-    .footer {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(30,64,175,0.7);
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .footer small {
-      opacity: 0.9;
-    }
-    .footer-links {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      font-size: 0.8rem;
-    }
-    @media (max-width: 840px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-right {
-        order: -1;
-      }
-      .grid-2 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      nav ul {
-        display: none;
-      }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e293b;
+      border-top: 2px solid #e11d48;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
+
 <header>
-  <div class="nav">
-    <div class="logo">
-      <div class="logo-badge">GA</div>
-      <span>Greve dos Alunos</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#termo">Termo da greve</a></li>
-        <li><a href="#tabela">Informações</a></li>
-        <li><a href="#reivindicacoes">Reivindicações</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </nav>
-    <span class="pill">31 de abril · Greve estudantil</span>
-  </div>
+  <h1>Greve dos Alunos – 24 de Abril</h1>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#funciona">Como Funciona</a>
+    <a href="#termo">Termo da Greve</a>
+    <a href="#tabela">Informações</a>
+    <a href="#reivindicacoes">Reivindicações</a>
+    <a href="#faq">FAQ</a>
+  </nav>
 </header>
 
 <main>
-  <!-- HERO -->
-  <section class="hero" id="topo">
-    <div>
-      <h1>Greve dos Alunos pela <span>Escola que Merecemos</span></h1>
-      <p class="hero-sub">
-        A Escola Básica 2/3 Escultor António Fernandes de Sá deve ser um espaço seguro, digno e motivador.
-        Quando as condições falham, a nossa voz levanta-se. Esta greve é o nosso sinal claro: queremos
-        estudar com respeito, qualidade e dignidade.
-      </p>
-      <div class="hero-meta">
-        <span>Data: <strong>31 de abril</strong></span>
-        <span>Tipo: Greve estudantil</span>
-        <span>Local: Escola Básica 2/3 Escultor António Fernandes de Sá</span>
-      </div>
-      <div class="hero-actions">
-        <button class="btn btn-primary" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">
-          Como participar
-        </button>
-        <button class="btn btn-outline" onclick="document.getElementById('reivindicacoes').scrollIntoView({behavior:'smooth'})">
-          Ver reivindicações
-        </button>
-      </div>
-      <p class="hero-note">
-        A participação é voluntária, pacífica e responsável. Quanto mais unidos estivermos, mais forte será a mensagem.
-      </p>
-    </div>
-    <div class="hero-right">
-      <h2>Greve Estudantil · 2026</h2>
-      <p class="hero-right-main">
-        No dia <strong>31 de abril</strong>, os alunos organizam uma ação coletiva para exigir
-        melhorias nas condições da escola. Não é contra professores, é a favor de uma escola melhor
-        para todos.
-      </p>
-      <div class="hero-taglist">
-        <span>Ambiente digno</span>
-        <span>Segurança</span>
-        <span>Infraestruturas</span>
-        <span>Respeito pelos alunos</span>
-      </div>
-      <div class="hero-date-card">
-        <div>
-          <span>Dia da Greve</span><br />
-          <strong>31 de abril · Falta justificada pela consciência coletiva</strong>
-        </div>
-        <div class="badge-alert">Ação pacífica</div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SOBRE -->
-  <section id="sobre">
-    <h2>Sobre a greve</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Porque é que esta greve existe?</h3>
-        <p>
-          A escola deveria ser um espaço seguro, digno e motivador. Um lugar onde cada aluno consegue
-          aprender, crescer e sentir orgulho do ambiente em que passa tantos anos da sua vida. Mas quando
-          as condições básicas começam a falhar — desde salas degradadas até materiais insuficientes —
-          a qualidade do ensino e o bem‑estar de todos ficam comprometidos.
-        </p>
-        <p>
-          Esta greve nasce da necessidade de sermos ouvidos. Não estamos a exigir nada impossível:
-          queremos uma escola que ofereça condições mínimas de conforto, segurança e respeito.
-        </p>
-      </div>
-      <div class="card">
-        <h3>O que queremos mudar?</h3>
-        <ul class="list">
-          <li>Melhorar as condições físicas das salas de aula e espaços comuns.</li>
-          <li>Garantir segurança básica em todo o recinto escolar.</li>
-          <li>Assegurar limpeza regular e adequada em casas de banho e corredores.</li>
-          <li>Ter materiais e infraestruturas em estado minimamente aceitável.</li>
-          <li>Mostrar que os alunos têm voz e querem participar na construção da escola.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<section id="sobre">
+  <h2>Sobre a Greve</h2>
+  <p>
+    A greve dos alunos da <strong>Escola Básica 2/3 Escultor António Fernandes de Sá</strong> surge da necessidade urgente de melhorar as condições do estabelecimento de ensino.  
+    A escola deve ser um espaço seguro, limpo e digno — e quando isso falha, os alunos têm o direito de se manifestar.
+  </p>
+</section>
 
-  <!-- COMO FUNCIONA -->
-  <section id="como-funciona">
-    <h2>Como funciona a greve</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Explicação simples</h3>
-        <p>
-          No dia marcado, os alunos podem faltar às aulas para mostrar que as condições da escola
-          precisam de mudar. A participação é voluntária e pacífica, e o objetivo é chamar a atenção
-          para problemas que afetam todos. Quanto mais unidos estivermos, mais força a nossa mensagem terá.
-        </p>
-        <p>
-          A greve dos alunos é uma ação coletiva criada para exigir melhores condições na escola.
-          Surge da necessidade de garantir um ambiente seguro, limpo e digno para todos.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Passo a passo</h3>
-        <div class="timeline">
-          <div class="timeline-step">
-            <strong>1. Informação</strong>
-            Os alunos tomam conhecimento da greve, dos motivos e das regras de participação.
-          </div>
-          <div class="timeline-step">
-            <strong>2. Decisão</strong>
-            Cada aluno decide, de forma consciente, se participa na greve e como o faz.
-          </div>
-          <div class="timeline-step">
-            <strong>3. Dia da greve</strong>
-            No dia 31 de abril, os alunos faltam às aulas e participam em ações pacíficas.
-          </div>
-          <div class="timeline-step">
-            <strong>4. Diálogo</strong>
-            A greve abre espaço para diálogo com direção, comunidade escolar e entidades responsáveis.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="funciona">
+  <h2>Como Funciona a Greve</h2>
+  <p>
+    No dia <strong>24 de abril</strong>, os alunos podem faltar às aulas como forma de protesto.  
+    A participação é voluntária e pacífica.  
+    O objetivo é chamar a atenção para problemas que afetam todos os estudantes e exigir melhorias reais.
+  </p>
+</section>
 
-  <!-- TERMO DA GREVE -->
-  <section id="termo">
-    <h2>Termo da Greve » Art.º 539.º do CT (adaptado)</h2>
-    <div class="card term-box">
-Os alunos da <span class="highlight">Escola Básica 2/3 Escultor António Fernandes de Sá</span> declaram que realizarão
-uma greve estudantil no dia <span class="highlight">31 de abril</span>, como forma de protesto pelas atuais condições
-do estabelecimento de ensino, consideradas insuficientes para garantir um ambiente seguro, digno e adequado à aprendizagem.
+<section id="termo">
+  <h2>Termo da Greve » Art.º 539.º do CT (Adaptado)</h2>
+  <p>
+    Os alunos da <strong>Escola Básica 2/3 Escultor António Fernandes de Sá</strong> declaram que realizarão uma greve estudantil no dia <strong>24 de abril</strong>, como forma de protesto pelas condições atuais da escola, consideradas insuficientes para garantir um ambiente seguro, digno e adequado à aprendizagem.
+  </p>
+  <p>
+    A greve consiste na ausência voluntária às aulas e na participação em ações pacíficas de sensibilização.  
+    Este termo formaliza a decisão coletiva dos alunos e reforça que a greve é pacífica, organizada e orientada para a defesa do direito a condições escolares adequadas.
+  </p>
+</section>
 
-Esta greve consiste na ausência voluntária às aulas durante o dia indicado, bem como na participação em ações
-pacíficas de sensibilização. O objetivo é demonstrar, de forma organizada e responsável, a necessidade urgente
-de melhorias nas condições físicas e estruturais da escola.
+<section id="tabela">
+  <h2>Tabela de Informações</h2>
+  <table>
+    <tr>
+      <th>Categoria</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>Motivo</td>
+      <td>Más condições da escola</td>
+    </tr>
+    <tr>
+      <td>Data</td>
+      <td>24 de abril</td>
+    </tr>
+    <tr>
+      <td>Tipo de Ação</td>
+      <td>Greve estudantil</td>
+    </tr>
+    <tr>
+      <td>Objetivo</td>
+      <td>Exigir melhorias urgentes</td>
+    </tr>
+    <tr>
+      <td>Participação</td>
+      <td>Voluntária</td>
+    </tr>
+    <tr>
+      <td>Caráter</td>
+      <td>Pacífico e organizado</td>
+    </tr>
+  </table>
+</section>
 
-Este termo formaliza a decisão coletiva dos alunos e comunica que a greve tem caráter pacífico, reivindicativo
-e orientado para a defesa do direito a condições escolares adequadas.
-    </div>
-  </section>
+<section id="reivindicacoes">
+  <h2>Reivindicações</h2>
+  <ul>
+    <li>Melhorias nas salas de aula e espaços comuns</li>
+    <li>Reparação de infraestruturas danificadas</li>
+    <li>Melhoria da limpeza e higiene</li>
+    <li>Garantia de segurança no recinto escolar</li>
+    <li>Materiais e equipamentos em condições adequadas</li>
+  </ul>
+</section>
 
-  <!-- TABELA DE INFORMAÇÕES -->
-  <section id="tabela">
-    <h2>Tabela de informações da greve</h2>
-    <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Categoria</th>
-            <th>Descrição</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Motivo da greve</td>
-            <td>Más condições da Escola Básica 2/3 Escultor António Fernandes de Sá</td>
-          </tr>
-          <tr>
-            <td>Data da greve</td>
-            <td>31 de abril</td>
-          </tr>
-          <tr>
-            <td>Tipo de ação</td>
-            <td>Greve estudantil com falta voluntária às aulas</td>
-          </tr>
-          <tr>
-            <td>Objetivo principal</td>
-            <td>Exigir melhorias urgentes nas condições da escola</td>
-          </tr>
-          <tr>
-            <td>Participação</td>
-            <td>Livre e voluntária para todos os alunos</td>
-          </tr>
-          <tr>
-            <td>Forma de protesto</td>
-            <td>Ausência às aulas + ações pacíficas de sensibilização</td>
-          </tr>
-          <tr>
-            <td>Caráter da greve</td>
-            <td>Pacífico, organizado e reivindicativo</td>
-          </tr>
-          <tr>
-            <td>Mensagem central</td>
-            <td>Os alunos merecem um ambiente escolar digno e seguro</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+<section id="faq">
+  <h2>Perguntas Frequentes</h2>
+  <p><strong>A greve é contra os professores?</strong><br>
+  Não. A greve é para melhorar a escola, não para atacar funcionários.</p>
 
-  <!-- REIVINDICAÇÕES -->
-  <section id="reivindicacoes">
-    <h2>Reivindicações principais</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Condições físicas e segurança</h3>
-        <ul class="list">
-          <li>Reparação de salas com infiltrações, paredes danificadas ou janelas partidas.</li>
-          <li>Melhoria da iluminação em salas, corredores e espaços exteriores.</li>
-          <li>Garantia de segurança em portões, acessos e zonas de recreio.</li>
-          <li>Verificação e manutenção regular de equipamentos essenciais.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Ambiente digno e respeito</h3>
-        <ul class="list">
-          <li>Limpeza frequente e adequada de casas de banho e espaços comuns.</li>
-          <li>Disponibilização de materiais básicos em bom estado (cadeiras, mesas, quadros, etc.).</li>
-          <li>Criação de canais de escuta ativa para as preocupações dos alunos.</li>
-          <li>Compromisso público com um plano de melhoria das condições da escola.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <p><strong>Sou obrigado a participar?</strong><br>
+  Não. A participação é totalmente voluntária.</p>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <h2>Perguntas frequentes (FAQ)</h2>
-    <div class="card">
-      <div class="faq-item">
-        <h3>A greve é contra os professores?</h3>
-        <p>
-          Não. A greve é uma ação dos alunos para chamar a atenção para as condições da escola.
-          Não é um ataque a professores ou funcionários, mas um pedido de melhoria do espaço onde todos convivem.
-        </p>
-      </div>
-      <div class="faq-item">
-        <h3>Sou obrigado a participar?</h3>
-        <p>
-          Não. A participação é totalmente voluntária. Cada aluno decide se quer ou não aderir à greve,
-          de forma consciente e responsável.
-        </p>
-      </div>
-      <div class="faq-item">
-        <h3>O que posso fazer se não puder faltar às aulas?</h3>
-        <p>
-          Podes apoiar divulgando a informação, conversando com colegas, participando em debates e ajudando
-          a construir propostas para melhorar a escola.
-        </p>
-      </div>
-      <div class="faq-item">
-        <h3>A greve resolve tudo sozinha?</h3>
-        <p>
-          Não, mas é um passo importante. A greve mostra que os alunos estão atentos e organizados.
-          Depois dela, é essencial manter o diálogo e acompanhar se as promessas de melhoria são cumpridas.
-        </p>
-      </div>
-    </div>
-  </section>
+  <p><strong>Posso apoiar sem faltar?</strong><br>
+  Sim. Podes divulgar, informar colegas e participar em debates.</p>
+</section>
 
-  <!-- CONTACTO / NOTA FINAL -->
-  <section id="contacto">
-    <h2>Participa, informa-te, fala</h2>
-    <div class="card">
-      <p>
-        A força desta greve está na união e na clareza da mensagem. Fala com os teus colegas, discute ideias,
-        partilha preocupações e ajuda a construir propostas concretas para melhorar a escola.
-      </p>
-      <p>
-        Se o teu objetivo é uma escola melhor, então já fazes parte desta luta. A greve é apenas uma das formas
-        de mostrar isso.
-      </p>
-      <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--muted);">
-        <strong class="highlight">Nota:</strong> este site é informativo e não substitui qualquer comunicação oficial
-        da direção da escola ou de outras entidades.
-      </p>
-    </div>
-  </section>
-
-  <div class="footer">
-    <small>Greve dos Alunos · Escola Básica 2/3 Escultor António Fernandes de Sá · 31 de abril</small>
-    <div class="footer-links">
-      <a href="#topo">Voltar ao topo</a>
-      <a href="#tabela">Ver tabela</a>
-      <a href="#reivindicacoes">Reivindicações</a>
-    </div>
-  </div>
 </main>
+
+<footer>
+  Greve dos Alunos · Escola Básica 2/3 Escultor António Fernandes de Sá · 24 de abril
+</footer>
+
 </body>
 </html>
